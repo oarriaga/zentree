@@ -4,12 +4,8 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-def hextorgb(hexstring):
-    r = int(hexstring[0:2], 16)
-    g = int(hexstring[2:4], 16)
-    b = int(hexstring[4:6], 16)
-    return (r, g, b)
+from utils.colors import get_zenburn_colors
+from utils.colors import hex_to_rgb
 
 
 MAX_DEPTH = 15
@@ -60,12 +56,13 @@ def recursive_branch(image, init_length, depth, angle, start_point):
 
 if __name__ == '__main__':
     global zen_points
-    zen_points = np.array([hextorgb(string)
-                          for string in open('utils/zenburn_colors.txt', 'r')])
+    #zen_points = np.array([hextorgb(string)
+                          #for string in open('utils/zenburn_colors.txt', 'r')])
+    zen_points = get_zenburn_colors()
     size_tuple = (1200, 1920, 3)
     (width, height, _) = size_tuple
 
-    img = np.full(size_tuple, hextorgb("3f3f3f"), dtype=np.uint8)
+    img = np.full(size_tuple, hex_to_rgb("3f3f3f"), dtype=np.uint8)
     recursive_branch(img, 200, 1, math.pi/2, (700, 1200))
 
     plt.imshow(img)
