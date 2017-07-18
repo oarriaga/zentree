@@ -11,4 +11,4 @@ recursive_branch(image, 200, 1, math.pi/2, (700, 1200))
 
 plt.imshow(image)
 plt.show()
-# plt.imsave("wallpaper.png", img)
+plt.imsave("wallpaper.png", image)
