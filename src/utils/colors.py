@@ -16,4 +16,5 @@ def get_zenburn_colors(color_file_path='utils/zenburn_colors.txt'):
 
 def create_background(image_size=(1200, 1920, 3),
                       background_hex_color='3f3f3f'):
-    return np.full(image_size, hex_to_rgb("3f3f3f"), dtype=np.uint8)
+    # return np.full(image_size, hex_to_rgb("3f3f3f"), dtype=np.uint8)
+    return np.full(image_size, (18, 19, 19), dtype=np.uint8)
